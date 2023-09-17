@@ -1,15 +1,15 @@
 [[pages]]
-path = "dashboard.py"
+path = "../dashboard.py"
 name = "Stock Price Predictions"
 
 [[pages]]
-path = "pages/performance.py"
+path = "../pages/performance.py"
 name = "Model Comparison"
 
 [[pages]]
-path = "pages/backtests.py"
+path = "../pages/backtests.py"
 name = "Backtests"
 
 [[pages]]
-path = "pages/trades.py"
+path = "..//pages/trades.py"
 name = "Trades"
