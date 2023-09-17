@@ -1,0 +1,4 @@
+Model,Target,Metric,Score
+lstm_classifier,Sign,Precision,0.54
+lstm_classifier,Sign,Recall,0.6353
+lstm_classifier,Sign,F1,0.5838

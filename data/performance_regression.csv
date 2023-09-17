@@ -1,0 +1,9 @@
+Model,Target,Metric,Score
+lstm_regressor,Sign,Precision,0.0
+lstm_regressor,Sign,Recall,0.0
+lstm_regressor,Sign,F1,0.0
+lstm_regressor,Price,SMAPE,6.0794
+lstm_regressor,Price,SMAPE_last,10.6224
+lstm_regressor,Log Return,MAE,0.0245
+lstm_regressor,Log Return,MAE_naive,0.0187
+lstm_regressor,Log Return,MASE,1.3121
