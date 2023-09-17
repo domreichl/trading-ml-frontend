@@ -1,0 +1,15 @@
+[[pages]]
+path = "src/visualization/dashboard.py"
+name = "Stock Price Predictions"
+
+[[pages]]
+path = "src/visualization/pages/performance.py"
+name = "Model Comparison"
+
+[[pages]]
+path = "src/visualization/pages/backtests.py"
+name = "Backtests"
+
+[[pages]]
+path = "src/visualization/pages/trades.py"
+name = "Trades"
