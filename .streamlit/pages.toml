@@ -4,12 +4,12 @@ name = "Stock Price Predictions"
 
 [[pages]]
 path = "pages/performance.py"
-name = "Model Comparison"
+name = "Model Performance"
+
+[[pages]]
+path = "pages/trades.py"
+name = "Trading Performance"
 
 [[pages]]
 path = "pages/backtests.py"
 name = "Backtests"
-
-[[pages]]
-path = "pages/trades.py"
-name = "Trades"

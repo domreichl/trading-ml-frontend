@@ -1,18 +1,21 @@
 import streamlit as st
 from st_pages import add_page_title
 
-from utils.file_handling import read_json_file
+from utils.file_handling import read_csv_file, read_json_file
 
 add_page_title()
 
+trades = read_csv_file("trades")
 trading_performance = read_json_file("trading_performance")
 model_performance = read_json_file("model_performance")
 
+st.dataframe(trades)
+
 st.subheader(f"Totals")
-c1, c2, c3, c4 = st.columns(4)
+c1, c2, c3 = st.columns(4)
 c1.metric("Volume", trading_performance["TOTAL_VOLUME"])
-c3.metric("Gross Profit", "{:.2}€".format(trading_performance["TOTAL_GROSS_PROFIT"]))
-c4.metric("Fees", round(trading_performance["TOTAL_FEES"], 2))
+c2.metric("Gross Profit", "{:.2}€".format(trading_performance["TOTAL_GROSS_PROFIT"]))
+c3.metric("Fees", round(trading_performance["TOTAL_FEES"], 2))
 
 # trading_performance = {
 #     "N_TRADES": len(df),
