@@ -9,13 +9,15 @@ trades = read_csv_file("trades")
 trading_performance = read_json_file("trading_performance")
 model_performance = read_json_file("model_performance")
 
-st.dataframe(trades)
-
 st.subheader(f"Totals")
-c1, c2, c3 = st.columns(4)
+c1, c2, c3 = st.columns(3)
 c1.metric("Volume", trading_performance["TOTAL_VOLUME"])
 c2.metric("Gross Profit", "{:.2}€".format(trading_performance["TOTAL_GROSS_PROFIT"]))
 c3.metric("Fees", round(trading_performance["TOTAL_FEES"], 2))
+
+st.subheader(f"Trades")
+if st.checkbox("Show dataframe"):
+    st.dataframe(trades)
 
 # trading_performance = {
 #     "N_TRADES": len(df),
