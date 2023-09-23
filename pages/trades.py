@@ -10,10 +10,10 @@ model_performance = read_json_file("model_performance")
 
 st.subheader(f"Totals")
 c1, c2, c3, c4 = st.columns(4)
-c1.metric("Volume", "{:.2}€".format(trading_performance["TOTAL_VOLUME"]))
-c2.metric("Gross Profit", "{:.2}€".format(trading_performance["TOTAL_GROSS_PROFIT"]))
+c1.metric("Volume", trading_performance["TOTAL_VOLUME"])
+c2.metric("Gross Profit", round(trading_performance["TOTAL_GROSS_PROFIT"], 2))
 c3.metric("Net Profit", "{:.2}€".format(trading_performance["TOTAL_NET_PROFIT"]))
-c4.metric("Fees", "{:.2}€".format(trading_performance["TOTAL_FEES"]))
+c4.metric("Fees", round(trading_performance["TOTAL_FEES"], 2))
 
 # trading_performance = {
 #     "N_TRADES": len(df),
