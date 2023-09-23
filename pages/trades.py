@@ -15,6 +15,8 @@ c1.metric("Volume", f"{tp['TOTAL_VOLUME']:.2}")
 c2.text("Gross Profit", "{:.2}€".format(tp["TOTAL_GROSS_PROFIT"]))
 c3.text("Fees", "{:.2}€".format(tp["TOTAL_FEES"]))
 
+st.write("aa")
+
 st.subheader(f"Trades")
 if st.checkbox("Show dataframe"):
     st.dataframe(trades)
