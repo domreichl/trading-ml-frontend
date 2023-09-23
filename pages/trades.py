@@ -9,39 +9,29 @@ trades = read_csv_file("trades")
 tp = read_json_file("trading_performance")
 mp = read_json_file("model_performance")
 
-st.subheader(f"Totals")
+st.subheader("Statistics")
+a1, a2, a3 = st.columns(3)
+a1.metric("Trades", f"{round(tp['N_TRADES'])}")
+a2.metric("Total Volume", f"{round(tp['TOTAL_VOLUME'])}€")
+a3.metric("Total Gross Profit", f"{round(tp['TOTAL_GROSS_PROFIT'])}€")
+b1, b2, b3 = st.columns(3)
+b1.metric("Winning Trades", f"{round(tp['N_TRADES_WIN'])}")
+b2.metric("Losing Trades", f"{round(tp['N_TRADES_LOSS'])}")
+b3.metric("Total Fees", f"{round(tp['TOTAL_FEES'])}€")
 c1, c2, c3 = st.columns(3)
-c1.metric("Volume", f"{tp['TOTAL_VOLUME']:.2}")
-c2.metric("Gross Profit", f"{tp['TOTAL_GROSS_PROFIT']:.2}")
-c3.metric("Fees", f"{tp['TOTAL_FEES']:.2}")
-
-
-st.text(f"Volume: {tp['TOTAL_VOLUME']:.2}")
-st.write(f"Gross Profit: {tp['TOTAL_GROSS_PROFIT']:.2}")
-st.text(f"Fees: {tp['TOTAL_FEES']:.2}")
+c1.metric("Win Rate", f"{round(tp['N_TRADES_WIN'])}%")
+c2.metric("SQN", f"{round(tp['SQN'])}")
+c3.metric("Total Net Profit", f"{round(tp['TOTAL_NET_PROFIT'])}€")
+d1, d2, d3 = st.columns(3)
+d1.metric("Average Profit", f"{round(tp['AVG_PROFIT'])}€")
+d2.metric("Highest Win", f"{round(tp['MAX_WIN'])}€")
+d3.metric("Highest Loss", f"{round(tp['MAX_LOSS'])}€")
 
 st.subheader(f"Trades")
 if st.checkbox("Show dataframe"):
     st.dataframe(trades)
 
-# trading_performance = {
-#     "N_TRADES": len(df),
-#     "N_TRADES_WIN": len(trades_win),
-#     "N_TRADES_LOSS": len(trades_loss),
-#     "WIN_RATE": len(trades_win) / len(df),
-#     "TOTAL_VOLUME": (df["BUY_PRICE"] * df["SHARES"]).sum(),
-#     "TOTAL_GROSS_PROFIT": df["GROSS_PROFIT"].sum(),
-#     "TOTAL_NET_PROFIT": df["NET_PROFIT"].sum(),
-#     "TOTAL_FEES": df["FEES"].sum(),
-#     "AVG_VOLUME": (df["BUY_PRICE"] * df["SHARES"]).mean(),
-#     "AVG_PROFIT": df["NET_PROFIT"].mean(),
-#     "STD_PROFIT": df["NET_PROFIT"].std(),
-#     "MAX_WIN": df["NET_PROFIT"].max(),
-#     "MAX_LOSS": df["NET_PROFIT"].min(),
-#     "AVG_WIN": trades_win["NET_PROFIT"].mean(),
-#     "AVG_LOSS": trades_loss["NET_PROFIT"].mean(),
-#     "SQN": df["REWARD"].mean() / df["REWARD"].std() * np.sqrt(len(df)),
-# }
+# TODO: model-specific trading performance
 # for model in df["MODEL"].unique():
 #     model_performance[model] = {
 #         "RETURN_MAE": np.mean(df_model["RETURN_AE"]),
