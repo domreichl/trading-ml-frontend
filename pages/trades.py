@@ -16,9 +16,9 @@ c2.metric("Gross Profit", f"{tp['TOTAL_GROSS_PROFIT']:.2}")
 c3.metric("Fees", f"{tp['TOTAL_FEES']:.2}")
 
 
-st.text("Volume", f"{tp['TOTAL_VOLUME']:.2}")
-st.write("Gross Profit", f"{tp['TOTAL_GROSS_PROFIT']:.2}")
-st.text("Fees", f"{tp['TOTAL_FEES']:.2}")
+st.text(f"Volume: {tp['TOTAL_VOLUME']:.2}")
+st.write(f"Gross Profit: {tp['TOTAL_GROSS_PROFIT']:.2}")
+st.text(f"Fees: {tp['TOTAL_FEES']:.2}")
 
 st.subheader(f"Trades")
 if st.checkbox("Show dataframe"):
