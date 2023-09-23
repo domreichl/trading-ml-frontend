@@ -12,8 +12,8 @@ mp = read_json_file("model_performance")
 st.subheader(f"Totals")
 c1, c2, c3 = st.columns(3)
 c1.metric("Volume", "{:.2}€".format(tp["TOTAL_VOLUME"]))
-c2.metric("Gross Profit", "{:.2}€".format(tp["GROSS_PROFIT"]))
-c3.metric("Fees", "{:.2}€".format(tp["FEES"]))
+c2.metric("Gross Profit", "{:.2}€".format(tp["TOTAL_GROSS_PROFIT"]))
+c3.metric("Fees", "{:.2}€".format(tp["TOTAL_FEES"]))
 
 st.subheader(f"Trades")
 if st.checkbox("Show dataframe"):
