@@ -1,9 +1,7 @@
-import os
-import numpy as np
-import pandas as pd
 import streamlit as st
 from st_pages import add_page_title
-from pathlib import Path
+
+from utils.file_handling import read_csv_file
 
 
 add_page_title()
@@ -25,7 +23,7 @@ metric_selected = st.radio(
     captions=metrics_captions,
 )
 
-performance = pd.read_csv(os.path.join("data", "performance_regression.csv"))
+performance = read_csv_file("performance_regression")
 performance = performance[
     performance["Target"].isin(["Price", "Log Return"])
     & performance["Metric"].isin(metrics_available)

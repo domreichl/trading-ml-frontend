@@ -1,12 +1,12 @@
-import os, json
 import numpy as np
 import pandas as pd
 import datetime as dt
 import streamlit as st
-import plotly.express as pe
 import plotly.graph_objects as go
 from st_pages import show_pages_from_config, add_page_title
 from pathlib import Path
+
+from utils.file_handling import read_json_file
 
 
 show_pages_from_config()
@@ -44,9 +44,7 @@ def get_naive_forecast(df):
 
 
 df_dict = {
-    fn: set_date_index(
-        pd.DataFrame(json.load(open(os.path.join("data", fn + ".json"))))
-    )
+    fn: set_date_index(pd.DataFrame(read_json_file(fn)))
     for fn in [
         "prices_actual",
         "prices_predicted",
