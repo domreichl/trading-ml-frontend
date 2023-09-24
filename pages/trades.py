@@ -59,5 +59,14 @@ st.plotly_chart(
     )
 )
 
+df = pd.DataFrame(
+    {
+        "Trades": ["2 Trades"] * 2,
+        "W/L": ["Winning Trades", "Losing Trades"],
+        "Count": [2, 1],
+    }
+)
+st.plotly_chart(px.sunburst(df, path=["Trades", "W/L"], values="Count"))
+
 st.subheader(f"Trades")
 st.dataframe(trades)
