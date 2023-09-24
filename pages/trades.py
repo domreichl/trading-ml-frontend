@@ -36,7 +36,7 @@ st.plotly_chart(
     px.pie(
         names=list(chart_colors.keys()),
         values=[tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
-        colors=list(chart_colors.keys()),
+        color=list(chart_colors.keys()),
         color_discrete_map=chart_colors,
     )
 )
