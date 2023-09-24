@@ -73,7 +73,7 @@ st.plotly_chart(
         values="Percentage",
         color="W/L",
         color_discrete_map={
-            "(?)": "black",
+            "(?)": "darkslateblue",
             df["W/L"][0]: "forestgreen",
             df["W/L"][1]: "firebrick",
         },
