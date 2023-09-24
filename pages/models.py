@@ -1,7 +1,7 @@
 import streamlit as st
 from st_pages import add_page_title
 
-from utils.file_handling import read_csv_file
+from utils.file_handling import read_csv_file, read_json_file
 
 
 add_page_title()
@@ -33,3 +33,18 @@ if metric_selected == "all":
     st.dataframe(performance)
 else:
     st.dataframe(performance[performance["Metric"] == metric_selected])
+
+
+mp = read_json_file("model_performance")
+
+
+# TODO: model-specific trading performance
+# for model in df["MODEL"].unique():
+#     model_performance[model] = {
+#         "RETURN_MAE": np.mean(df_model["RETURN_AE"]),
+#         "PRICE_SMAPE": compute_SMAPE(sell_price_pr, sell_price_gt),
+#         "ACCURACY": accuracy_score(win_gt, win_pr),
+#         "PRECISION": precision,
+#         "RECALL": recall,
+#         "F1": f1_score,
+#     }

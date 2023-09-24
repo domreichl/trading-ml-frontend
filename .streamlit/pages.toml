@@ -3,12 +3,12 @@ path = "dashboard.py"
 name = "Stock Price Predictions"
 
 [[pages]]
-path = "pages/performance.py"
-name = "Model Performance"
-
-[[pages]]
 path = "pages/trades.py"
 name = "Trading Performance"
+
+[[pages]]
+path = "pages/models.py"
+name = "Model Comparison"
 
 [[pages]]
 path = "pages/backtests.py"
