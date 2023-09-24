@@ -36,8 +36,6 @@ else:
 
 
 mp = read_json_file("model_performance")
-
-
 # TODO: model-specific trading performance
 # for model in df["MODEL"].unique():
 #     model_performance[model] = {

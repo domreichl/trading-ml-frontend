@@ -32,7 +32,7 @@ st.plotly_chart(
     px.pie(
         names=["Winning Trades", "Losing Trades"],
         values=[tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
-        colors=["darkgreen", "darkred"],
+        color=["darkgreen", "darkred"],
     )
 )
 
