@@ -55,7 +55,7 @@ st.plotly_chart(
         parents="parents",
         values="count",
         color="type",
-        color_discrete_map=dict(zip(names, colors)),
+        # color_discrete_map=dict(zip(names, colors)),
     )
 )
 
