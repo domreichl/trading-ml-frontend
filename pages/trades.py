@@ -43,6 +43,7 @@ st.plotly_chart(
             parent=["", "Trades", "Trades"],
             count=[tp["N_TRADES"], tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
         ),
+        parents="parent",
         values="count",
         color="character",
         color_discrete_map={
