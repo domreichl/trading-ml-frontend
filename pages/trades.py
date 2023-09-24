@@ -13,27 +13,6 @@ tp = read_json_file("trading_performance")
 
 st.subheader("Statistics")
 
-stats = pd.DataFrame(
-    {
-        "Trades": [f"{tp['N_TRADES']} Trades"] * tp["N_TRADES"],
-        "W/L": [f"{tp['N_TRADES_WIN']} Wins", f"{tp['N_TRADES_LOSS']} Losses"],
-        "Percentage": [tp["WIN_RATE"] * 100, (1 - tp["WIN_RATE"]) * 100],
-    }
-)
-st.plotly_chart(
-    px.sunburst(
-        stats,
-        path=["Trades", "W/L"],
-        values="Percentage",
-        color="W/L",
-        color_discrete_map={
-            "(?)": "indigo",
-            stats["W/L"][0]: "forestgreen",
-            stats["W/L"][1]: "firebrick",
-        },
-    )
-)
-
 a1, a2, a3 = st.columns(3)
 a1.metric("Trades", f"{round(tp['N_TRADES'])}")
 a2.metric("Volume", f"{round(tp['TOTAL_VOLUME'])}€")
@@ -49,35 +28,26 @@ c1.metric("SQN", f"{round(tp['SQN'])}")
 c2.metric("Fees", f"{round(tp['TOTAL_FEES'])}€")
 c3.metric("Average Net Profit", f"{round(tp['AVG_PROFIT'])}€")
 
-# st.plotly_chart(
-#     px.pie(
-#         color=list(chart_colors.keys()),
-#         values=[tp["N_TRADES_LOSS"], tp["N_TRADES_WIN"]],
-#         color_discrete_map=chart_colors,
-#     )
-# )
-
-names = [
-    f"{tp['N_TRADES']} Trades",
-    f"{tp['N_TRADES_WIN']} Wins",
-    f"{tp['N_TRADES_LOSS']} Losses",
-]
-values = [100, tp["WIN_RATE"] * 100, (1 - tp["WIN_RATE"]) * 100]
-colors = ["navy", "forestgreen", "firebrick"]
+st.subheader(f"Trades")
+counts = pd.DataFrame(
+    {
+        "Trades": ["Total"] * 2,
+        "W/L": [f"Wins ({tp['WIN_RATE']*100}%)", f"Losses ({(1-tp['WIN_RATE'])*100}%)"],
+        # "Percentage": [tp["WIN_RATE"] * 100, (1 - tp["WIN_RATE"]) * 100],
+        "Count": [tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
+    }
+)
 st.plotly_chart(
     px.sunburst(
-        dict(
-            name=names,
-            percentage=values,
-            total=["", names[0], names[0]],
-        ),
-        names="name",
-        parents="total",
-        values="percentage",
-        color="name",
-        color_discrete_map=dict(zip(names, colors)),
+        counts,
+        path=["Trades", "W/L"],
+        values="Count",
+        color="W/L",
+        color_discrete_map={
+            "(?)": "darkslategrey",
+            counts["W/L"][0]: "forestgreen",
+            counts["W/L"][1]: "firebrick",
+        },
     )
 )
-
-st.subheader(f"Trades")
 st.dataframe(trades)
