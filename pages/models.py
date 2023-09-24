@@ -37,18 +37,6 @@ else:
     st.dataframe(rp[rp["Metric"] == metric_selected])
 
 st.subheader("Trading Performance")
-mp = read_json_file("model_performance")
-# model_selected = st.selectbox("Select model", list(mp.keys()), index=0)
-df = pd.DataFrame.from_dict(mp, orient="index")
-# df.index.rename("Model", inplace=True)
-st.dataframe(df)
-# TODO: model-specific trading performance
-# for model in df["MODEL"].unique():
-#     model_performance[model] = {
-#         "RETURN_MAE": np.mean(df_model["RETURN_AE"]),
-#         "PRICE_SMAPE": compute_SMAPE(sell_price_pr, sell_price_gt),
-#         "ACCURACY": accuracy_score(win_gt, win_pr),
-#         "PRECISION": precision,
-#         "RECALL": recall,
-#         "F1": f1_score,
-#     }
+mp = pd.DataFrame.from_dict(read_json_file("model_performance"), orient="index")
+mp.index.rename("Model", inplace=True)
+st.dataframe(mp)
