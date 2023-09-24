@@ -13,6 +13,27 @@ tp = read_json_file("trading_performance")
 
 st.subheader("Statistics")
 
+stats = pd.DataFrame(
+    {
+        "Trades": [f"{tp['N_TRADES']} Trades"] * tp["N_TRADES"],
+        "W/L": [f"{tp['N_TRADES_WIN']} Wins", f"{tp['N_TRADES_LOSS']} Losses"],
+        "Percentage": [tp["WIN_RATE"] * 100, (1 - tp["WIN_RATE"]) * 100],
+    }
+)
+st.plotly_chart(
+    px.sunburst(
+        stats,
+        path=["Trades", "W/L"],
+        values="Percentage",
+        color="W/L",
+        color_discrete_map={
+            "(?)": "indigo",
+            stats["W/L"][0]: "forestgreen",
+            stats["W/L"][1]: "firebrick",
+        },
+    )
+)
+
 a1, a2, a3 = st.columns(3)
 a1.metric("Trades", f"{round(tp['N_TRADES'])}")
 a2.metric("Volume", f"{round(tp['TOTAL_VOLUME'])}€")
@@ -41,7 +62,6 @@ names = [
     f"{tp['N_TRADES_WIN']} Wins",
     f"{tp['N_TRADES_LOSS']} Losses",
 ]
-tp["WIN_RATE"] = 0.78
 values = [100, tp["WIN_RATE"] * 100, (1 - tp["WIN_RATE"]) * 100]
 colors = ["navy", "forestgreen", "firebrick"]
 st.plotly_chart(
@@ -56,27 +76,6 @@ st.plotly_chart(
         values="percentage",
         color="name",
         color_discrete_map=dict(zip(names, colors)),
-    )
-)
-
-df = pd.DataFrame(
-    {
-        "Trades": [f"{tp['N_TRADES']} Trades"] * tp["N_TRADES"],
-        "W/L": [f"{tp['N_TRADES_WIN']} Wins", f"{tp['N_TRADES_LOSS']} Losses"],
-        "Percentage": [tp["WIN_RATE"] * 100, (1 - tp["WIN_RATE"]) * 100],
-    }
-)
-st.plotly_chart(
-    px.sunburst(
-        df,
-        path=["Trades", "W/L"],
-        values="Percentage",
-        color="W/L",
-        color_discrete_map={
-            "(?)": "darkslateblue",
-            df["W/L"][0]: "forestgreen",
-            df["W/L"][1]: "firebrick",
-        },
     )
 )
 
