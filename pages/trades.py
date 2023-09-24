@@ -36,8 +36,9 @@ c3.metric("Average Net Profit", f"{round(tp['AVG_PROFIT'])}€")
 #     )
 # )
 
+n_trades = f"{tp['N_TRADES']} Trades"
 names = [
-    f"{tp['N_TRADES']} Trades",
+    n_trades,
     f"{tp['N_TRADES_LOSS']} Losses",
     f"{tp['N_TRADES_WIN']} Wins",
 ]
@@ -46,7 +47,7 @@ st.plotly_chart(
     px.sunburst(
         dict(
             type=names,
-            parents=["", "Trades", "Trades"],
+            parents=["", n_trades, n_trades]
             count=[tp["N_TRADES"], tp["N_TRADES_LOSS"], tp["N_TRADES_WIN"]],
         ),
         names="type",
