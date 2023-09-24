@@ -37,7 +37,8 @@ c3.metric("Average Net Profit", f"{round(tp['AVG_PROFIT'])}€")
 # )
 
 names = [
-    f"{tp['N_TRADES']} Trades" f"{tp['N_TRADES_LOSS']} Losses",
+    f"{tp['N_TRADES']} Trades",
+    f"{tp['N_TRADES_LOSS']} Losses",
     f"{tp['N_TRADES_WIN']} Wins",
 ]
 values = [100, tp["WIN_RATE"] * 100, (1 - tp["WIN_RATE"]) * 100]
