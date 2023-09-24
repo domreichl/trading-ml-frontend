@@ -38,7 +38,7 @@ else:
 
 st.subheader("Trading Performance")
 mp = read_json_file("model_performance")
-model_selected = st.selectbox("Select model", list(mp.keys()))
+model_selected = st.selectbox("Select model", list(mp.keys()), index=0)
 st.dataframe(pd.DataFrame(mp[model_selected]))
 # TODO: model-specific trading performance
 # for model in df["MODEL"].unique():
