@@ -39,7 +39,9 @@ else:
 st.subheader("Trading Performance")
 mp = read_json_file("model_performance")
 model_selected = st.selectbox("Select model", list(mp.keys()), index=0)
-st.dataframe(mp[model_selected])
+df = pd.DataFrame(mp[model_selected], index=mp.keys())
+df.index_name = "metric"
+st.dataframe(df)
 # TODO: model-specific trading performance
 # for model in df["MODEL"].unique():
 #     model_performance[model] = {
