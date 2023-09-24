@@ -63,7 +63,7 @@ df = pd.DataFrame(
     {
         "Trades": [f"{tp['N_TRADES']} Trades"] * tp["N_TRADES"],
         "W/L": [f"{tp['N_TRADES_WIN']} Wins", f"{tp['N_TRADES_LOSS']} Losses"],
-        "Count": [2, 1],
+        "Count": [tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
     }
 )
 st.plotly_chart(
@@ -73,7 +73,7 @@ st.plotly_chart(
         values="Count",
         color="W/L",
         color_discrete_map={
-            "(?)": "navy",
+            "(?)": "purple",
             df["W/L"][0]: "forestgreen",
             df["W/L"][1]: "firebrick",
         },
