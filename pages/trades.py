@@ -50,7 +50,7 @@ st.plotly_chart(
             percentage=values,
             total=["", names[0], names[0]],
         ),
-        names="name",
+        names="type",
         parents="total",
         values="percentage",
         color="type",
