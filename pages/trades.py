@@ -66,7 +66,18 @@ df = pd.DataFrame(
         "Count": [2, 1],
     }
 )
-st.plotly_chart(px.sunburst(df, path=["Trades", "W/L"], values="Count"))
+st.plotly_chart(
+    px.sunburst(
+        df,
+        path=["Trades", "W/L"],
+        values="Count",
+        color="W/L",
+        color_discrete_map={
+            "Winning Trades": "forestgreen",
+            "Losing Trades": "firebrick",
+        },
+    )
+)
 
 st.subheader(f"Trades")
 st.dataframe(trades)
