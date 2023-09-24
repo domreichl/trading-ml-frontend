@@ -31,22 +31,25 @@ c3.metric("Average Net Profit", f"{round(tp['AVG_PROFIT'])}€")
 st.subheader(f"Trades")
 counts = pd.DataFrame(
     {
-        "Trades": ["Total"] * 2,
-        "W/L": [f"Wins ({tp['WIN_RATE']*100}%)", f"Losses ({(1-tp['WIN_RATE'])*100}%)"],
+        "trades": [f"{tp['N_TRADES']} Trades"] * 2,
+        "rate": [
+            f"Wins ({tp['WIN_RATE']*100}%)",
+            f"Losses ({(1-tp['WIN_RATE'])*100}%)",
+        ],
         # "Percentage": [tp["WIN_RATE"] * 100, (1 - tp["WIN_RATE"]) * 100],
-        "Count": [tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
+        "count": [tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
     }
 )
 st.plotly_chart(
     px.sunburst(
         counts,
-        path=["Trades", "W/L"],
-        values="Count",
-        color="W/L",
+        path=["trades", "rate"],
+        values="count",
+        color="rate",
         color_discrete_map={
-            "(?)": "darkslategrey",
-            counts["W/L"][0]: "forestgreen",
-            counts["W/L"][1]: "firebrick",
+            "(?)": "black",
+            counts["rate"][0]: "forestgreen",
+            counts["rate"][1]: "firebrick",
         },
     )
 )
