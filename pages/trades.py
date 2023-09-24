@@ -29,14 +29,13 @@ c2.metric("Fees", f"{round(tp['TOTAL_FEES'])}€")
 c3.metric("Average Net Profit", f"{round(tp['AVG_PROFIT'])}€")
 
 chart_colors = {
-    "Winning Trades": "limegreen",
-    "Losing Trades": "firebrick",
+    "Losing Trades": "darkred",
+    "Winning Trades": "darkgreen",
 }
 st.plotly_chart(
     px.pie(
-        names=list(chart_colors.keys()),
-        values=[tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
         color=list(chart_colors.keys()),
+        values=[tp["N_TRADES_LOSS"], tp["N_TRADES_WIN"]],
         color_discrete_map=chart_colors,
     )
 )
