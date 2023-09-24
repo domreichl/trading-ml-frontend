@@ -41,7 +41,7 @@ names = [
     f"{tp['N_TRADES_LOSS']} Losses",
     f"{tp['N_TRADES_WIN']} Wins",
 ]
-values = [100, (1 - tp["WIN_RATE"]) * 200, 300]
+values = [1, 1 - tp["WIN_RATE"], tp["WIN_RATE"]]
 colors = ["navy", "firebrick", "forestgreen"]
 st.plotly_chart(
     px.sunburst(
