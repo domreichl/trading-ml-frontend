@@ -32,24 +32,23 @@ st.subheader(f"Trades")
 counts = pd.DataFrame(
     {
         "trades": [f"{tp['N_TRADES']} Trades"] * 2,
-        "rate": [
-            f"Wins ({tp['WIN_RATE']*100}%)",
-            f"Losses ({(1-tp['WIN_RATE'])*100}%)",
+        "count": [
+            f"{tp['N_TRADES_WIN']} Wins",
+            f"{tp['N_TRADES_LOSS']} Losses",
         ],
-        # "Percentage": [tp["WIN_RATE"] * 100, (1 - tp["WIN_RATE"]) * 100],
-        "count": [tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
+        "percentage": [tp["WIN_RATE"] * 100, (1 - tp["WIN_RATE"]) * 100],
     }
 )
 st.plotly_chart(
     px.sunburst(
         counts,
-        path=["trades", "rate"],
-        values="count",
-        color="rate",
+        path=["trades", "count"],
+        values="percentage",
+        color="count",
         color_discrete_map={
             "(?)": "black",
-            counts["rate"][0]: "forestgreen",
-            counts["rate"][1]: "firebrick",
+            counts["count"][0]: "forestgreen",
+            counts["count"][1]: "firebrick",
         },
     )
 )
