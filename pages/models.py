@@ -10,7 +10,7 @@ st.sidebar.markdown(
     "Warning: The measures you see here are of dummy models used solely for showcasing purposes."
 )
 
-st.subheader("Test Performance")
+st.subheader("Test Results")
 metrics_available = ["all", "SMAPE", "MAE", "MASE"]
 metrics_captions = [
     "show all metrics",
@@ -38,6 +38,7 @@ else:
 
 st.subheader("Trading Performance")
 mp = read_json_file("model_performance")
+st.write(mp)
 model_selected = st.selectbox("Select model", list(mp.keys()), index=0)
 st.dataframe(pd.DataFrame(mp[model_selected]))
 # TODO: model-specific trading performance
