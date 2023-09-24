@@ -47,7 +47,7 @@ st.plotly_chart(
     px.sunburst(
         dict(
             type=names,
-            parents=["", n_trades, n_trades]
+            parents=["", n_trades, n_trades],
             count=[tp["N_TRADES"], tp["N_TRADES_LOSS"], tp["N_TRADES_WIN"]],
         ),
         names="type",
