@@ -32,11 +32,22 @@ chart_colors = {
     "Losing Trades": "darkred",
     "Winning Trades": "darkgreen",
 }
+# st.plotly_chart(
+#     px.pie(
+#         color=list(chart_colors.keys()),
+#         values=[tp["N_TRADES_LOSS"], tp["N_TRADES_WIN"]],
+#         color_discrete_map=chart_colors,
+#     )
+# )
+
 st.plotly_chart(
-    px.pie(
-        color=list(chart_colors.keys()),
-        values=[tp["N_TRADES_LOSS"], tp["N_TRADES_WIN"]],
-        color_discrete_map=chart_colors,
+    px.sunburst(
+        dict(
+            character=["Trades", "Wins", "Losses"],
+            parent=["", "Trades", "Trades"],
+            value=[tp["N_TRADES"], tp["N_TRADES_WIN"], tp["N_TRADES_LOSSES"]],
+        ),
+        values="count",
     )
 )
 
