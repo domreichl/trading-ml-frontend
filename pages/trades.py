@@ -8,7 +8,7 @@ from utils.file_handling import read_csv_file, read_json_file
 add_page_title()
 
 trades = read_csv_file("trades")
-trades.drop(columns=['ID'], inplace=True)
+trades.drop(columns=["ID"], inplace=True)
 tp = read_json_file("trading_performance")
 
 st.subheader("Statistics")
@@ -28,11 +28,16 @@ c1.metric("SQN", f"{round(tp['SQN'])}")
 c2.metric("Fees", f"{round(tp['TOTAL_FEES'])}€")
 c3.metric("Average Net Profit", f"{round(tp['AVG_PROFIT'])}€")
 
+chart_colors = {
+    "Winning Trades": "limegreen",
+    "Losing Trades": "firebrick",
+}
 st.plotly_chart(
     px.pie(
-        names=["Winning Trades", "Losing Trades"],
+        names=list(chart_colors.keys()),
         values=[tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
-        color_discrete_map={"Winning Trades": "limegreen", "Losing Trades": "firebrick",},
+        colors=list(chart_colors.keys()),
+        color_discrete_map=chart_colors,
     )
 )
 
