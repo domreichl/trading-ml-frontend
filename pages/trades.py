@@ -41,19 +41,20 @@ names = [
     f"{tp['N_TRADES_LOSS']} Losses",
     f"{tp['N_TRADES_WIN']} Wins",
 ]
+tp["WIN_RATE"] = 0.78
 values = [1, 1 - tp["WIN_RATE"], tp["WIN_RATE"]]
 colors = ["navy", "firebrick", "forestgreen"]
 st.plotly_chart(
     px.sunburst(
         dict(
-            type=names,
+            name=names,
             percentage=values,
             total=["", names[0], names[0]],
         ),
-        names="type",
+        names="name",
         parents="total",
         values="percentage",
-        color="type",
+        color="name",
         color_discrete_map=dict(zip(names, colors)),
     )
 )
