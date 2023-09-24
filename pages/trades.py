@@ -13,20 +13,22 @@ tp = read_json_file("trading_performance")
 
 st.subheader("Statistics")
 
-a1, a2, a3 = st.columns(3)
-a1.metric("Trades", f"{round(tp['N_TRADES'])}")
-a2.metric("Volume", f"{round(tp['TOTAL_VOLUME'])}€")
-a3.metric("Gross Profit", f"{round(tp['TOTAL_GROSS_PROFIT'])}€")
+a1, a2 = st.columns(2)
+#a1.metric("Trades", f"{round(tp['N_TRADES'])}")
+a1.metric("Volume", f"{round(tp['TOTAL_VOLUME'])}€")
+a2.metric("Gross Profit", f"{round(tp['TOTAL_GROSS_PROFIT'])}€")
 
 b1, b2, b3 = st.columns(3)
-b1.metric("Highest Win", f"{round(tp['MAX_WIN'])}€")
-b2.metric("Highest Loss", f"{round(tp['MAX_LOSS'])}€")
-b3.metric("Net Profit", f"{round(tp['TOTAL_NET_PROFIT'])}€")
 
-c1, c2, c3 = st.columns(3)
-c1.metric("SQN", f"{round(tp['SQN'])}")
-c2.metric("Fees", f"{round(tp['TOTAL_FEES'])}€")
-c3.metric("Average Net Profit", f"{round(tp['AVG_PROFIT'])}€")
+#b2.metric("Highest Loss", f"{round(tp['MAX_LOSS'])}€")
+b1.metric("Net Profit", f"{round(tp['TOTAL_NET_PROFIT'])}€")
+b3.metric("Average Net Profit per Trade", f"{round(tp['AVG_PROFIT'])}€")
+
+c1, c2 = st.columns(2)
+c1.metric("Highest Win | Loss", f"{round(tp['MAX_WIN'])}€" | {round(tp['MAX_LOSS'])}€)
+c2.metric("SQN", f"{round(tp['SQN'])}")
+#c2.metric("Fees", f"{round(tp['TOTAL_FEES'])}€")
+#c3.metric("Average Net Profit", f"{round(tp['AVG_PROFIT'])}€")
 
 st.subheader(f"Trades")
 counts = pd.DataFrame(
