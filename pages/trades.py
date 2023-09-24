@@ -28,10 +28,6 @@ c1.metric("SQN", f"{round(tp['SQN'])}")
 c2.metric("Fees", f"{round(tp['TOTAL_FEES'])}€")
 c3.metric("Average Net Profit", f"{round(tp['AVG_PROFIT'])}€")
 
-chart_colors = {
-    "Losing Trades": "darkred",
-    "Winning Trades": "darkgreen",
-}
 # st.plotly_chart(
 #     px.pie(
 #         color=list(chart_colors.keys()),
@@ -45,8 +41,15 @@ st.plotly_chart(
         dict(
             character=["Trades", "Wins", "Losses"],
             parent=["", "Trades", "Trades"],
-            values=[tp["N_TRADES"], tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
-        )
+            count=[tp["N_TRADES"], tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
+        ),
+        values="count",
+        color="character",
+        color_discrete_map={
+            "Trades": "blue",
+            "Losses": "darkred",
+            "Wins": "darkgreen",
+        },
     )
 )
 
