@@ -63,17 +63,17 @@ df = pd.DataFrame(
     {
         "Trades": [f"{tp['N_TRADES']} Trades"] * tp["N_TRADES"],
         "W/L": [f"{tp['N_TRADES_WIN']} Wins", f"{tp['N_TRADES_LOSS']} Losses"],
-        "Count": [tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
+        "Percentage": [tp["WIN_RATE"] * 100, (1 - tp["WIN_RATE"]) * 100],
     }
 )
 st.plotly_chart(
     px.sunburst(
         df,
         path=["Trades", "W/L"],
-        values="Count",
+        values="Percentage",
         color="W/L",
         color_discrete_map={
-            "(?)": "purple",
+            "(?)": "black",
             df["W/L"][0]: "forestgreen",
             df["W/L"][1]: "firebrick",
         },
