@@ -45,7 +45,7 @@ st.plotly_chart(
         dict(
             character=["Trades", "Wins", "Losses"],
             parent=["", "Trades", "Trades"],
-            values=[tp["N_TRADES"], tp["N_TRADES_WIN"], tp["N_TRADES_LOSSES"]],
+            values=[tp["N_TRADES"], tp["N_TRADES_WIN"], tp["N_TRADES_LOSS"]],
         ),
         values="count",
     )
