@@ -1,1 +1,10 @@
-{"lstm_regressor": {"RETURN_MAE": 0.14862850971922248, "PRICE_SMAPE": 8.913552121786807, "ACCURACY": 1.0, "PRECISION": 1.0, "RECALL": 1.0, "F1": 1.0}}
+{
+    "lstm_regression": {
+        "RETURN_MAE": 0.14862850971922248,
+        "PRICE_SMAPE": 8.913552121786807,
+        "ACCURACY": 1.0,
+        "PRECISION": 1.0,
+        "RECALL": 1.0,
+        "F1": 1.0
+    }
+}

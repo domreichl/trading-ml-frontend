@@ -11,7 +11,7 @@ st.sidebar.markdown(
 )
 
 st.subheader("Test Results")
-metrics_available = ["all", "SMAPE", "MAE", "MASE"]
+metrics_available = ["all", "SMAPE", "RMSE", "MASE"]
 metrics_captions = [
     "show all metrics",
     "Symmetric Mean Absolute Percentage Error",

@@ -1,9 +1,9 @@
 Model,Target,Metric,Score
-lstm_regressor,Sign,Precision,0.0
-lstm_regressor,Sign,Recall,0.0
-lstm_regressor,Sign,F1,0.0
-lstm_regressor,Price,SMAPE,5.8234
-lstm_regressor,Price,SMAPE_last,11.2432
-lstm_regressor,Log Return,MAE,0.0244
-lstm_regressor,Log Return,MAE_naive,0.0186
-lstm_regressor,Log Return,MASE,1.3105
+lstm_regression,Sign,Precision,0.0
+lstm_regression,Sign,Recall,0.0
+lstm_regression,Sign,F1,0.0
+lstm_regression,Price,SMAPE,5.8234
+lstm_regression,Price,SMAPE_last,11.2432
+lstm_regression,Log Return,MAE,0.0244
+lstm_regression,Log Return,MAE_naive,0.0186
+lstm_regression,Log Return,MASE,1.3105
